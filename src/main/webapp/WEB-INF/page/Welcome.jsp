@@ -72,7 +72,9 @@
     }
 </style>
 <body>
-
+<%
+    String isSuccessful=request.getParameter("isSuccessful");
+%>
 <div class="centerContent">
     <p class="center-text">箭塔与商人GM系统</p>
     <a href="/register" class="registerBtn" >注册</a>
@@ -80,6 +82,16 @@
 </div>
 </body>
 <script type="text/javascript">
+    var registerIsSuccessful="<%=isSuccessful%>";
+    if(registerIsSuccessful==="true")
+    {
+        window.alert("注册成功");
+    }else if(registerIsSuccessful==="false")
+    {
+        window.alert("注册失败");
+    }
+
+
     var centerText=document.getElementsByClassName("center-text");
     scaleAnimationBig(centerText[0]);
     function scaleAnimationBig(obj) {

@@ -32,6 +32,7 @@
 
 <body class="fix-header fix-sidebar card-no-border">
 <%
+String isChanged=request.getParameter("isChanged");
 User user=(User) session.getAttribute("user");
 UserSave userSave=(UserSave) session.getAttribute("userSave");
 if(user==null||userSave==null)
@@ -126,9 +127,9 @@ String nickName = userSave.getNickname();
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="GameData.jsp" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">游戏数据</span></a>
+                        <li> <a class="waves-effect waves-dark" href="/userSave" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">游戏数据</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="PersonalData.jsp" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">个人信息</span></a>
+                        <li> <a class="waves-effect waves-dark" href="/user" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">个人信息</span></a>
                         </li>
                         <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">玩家列表</span></a>
                         </li>
@@ -145,7 +146,7 @@ String nickName = userSave.getNickname();
             <div class="sidebar-footer">
 
 
-                <!-- item--><a href="index.jsp" class="link" data-toggle="tooltip" title="注销"><i class="mdi mdi-power"></i></a> </div>
+                <!-- item--><a href="/welcome" class="link" data-toggle="tooltip" title="注销"><i class="mdi mdi-power"></i></a> </div>
             <!-- End Bottom points-->
         </aside>
         <!-- ============================================================== -->
@@ -187,7 +188,7 @@ String nickName = userSave.getNickname();
                         <div class="card">
                             <div class="card-block">
 <%--                                修改个人信息表单提交--%>
-                                <form action="UpdatePersonalInfoPage.jsp" name="personalInfoForm" class="form-horizontal form-material" method="post" >
+                                <form action="/user" name="personalInfoForm" class="form-horizontal form-material" method="post" >
                                     <div class="form-group">
                                         <label for="userid" class="col-md-12">id</label>
                                         <div class="col-md-12">
@@ -255,6 +256,14 @@ String nickName = userSave.getNickname();
         //todo 测试 js中的session对象
         //var user= sessionStorage.getItem("user");
 
+        //修改后结果显示
+        if("<%=isChanged%>"==="true")
+        {
+            window.alert("修改成功");
+        }else if("<%=isChanged%>"==="false")
+        {
+            window.alert("修改失败");
+        }
 
 
 

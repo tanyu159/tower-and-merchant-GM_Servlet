@@ -41,7 +41,7 @@ public class LoginServlet extends HttpServlet {
         String password=req.getParameter("password");
         System.out.println("用户输入的电子邮箱"+emailAddress);
         System.out.println("用户输入的密码"+password);
-        //todo 数据判断操作 成功则存入session 页面跳转 失败显示信息
+        // 数据判断操作 成功则存入session 页面重定向方式跳转到PersonalData.jsp 失败则显示错误信息重定向到LoginPage.jsp
         Connection connection=C3P0DataSource.getConnection();
         User user= UserDAO.UserLogin(connection,emailAddress,password);
         if(user!=null)
@@ -59,8 +59,10 @@ public class LoginServlet extends HttpServlet {
             resp.sendRedirect("/user");
         }else {
             System.out.println("登录失败");
-            //再次重定向到本网页，并用url的使错误信息进行显示
-            resp.sendRedirect("/login?isOk=false");
+            //再次重定向到本网页，并用url的使错误信息进行显示【使用forward更好，因为未转到其他jsp，地址栏最好不变】
+            //resp.sendRedirect("/login?isOk=false");
+            RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/page/LoginPage.jsp?isOk=false");
+            dispatcher.forward(req,resp);
         }
     }
 
@@ -68,8 +70,8 @@ public class LoginServlet extends HttpServlet {
     public void init() throws ServletException {
         System.out.println("用户登录模块初始化");
         // 数据库连接池初始化
-        // 测试读取全局配置
-        //用application
+        // 读取全局配置
+        //用application对象
         ServletContext application=this.getServletContext();
         String dbURL= application.getInitParameter("url");
         String username=application.getInitParameter("username");
