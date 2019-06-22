@@ -7,6 +7,7 @@ import com.zuikaku.javabean.UserSave;
 import com.zuikaku.utils.C3P0DataSource;
 import org.omg.PortableInterceptor.SYSTEM_EXCEPTION;
 
+import javax.imageio.ImageIO;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletConfig;
 import javax.servlet.ServletContext;
@@ -15,8 +16,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import java.awt.*;
+import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.Random;
 
 public class LoginServlet extends HttpServlet {
 
@@ -30,6 +35,38 @@ public class LoginServlet extends HttpServlet {
         System.out.println("用户点击了登录，进入登录页面");
         RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/page/LoginPage.jsp");
         dispatcher.forward(req,resp);
+
+//        //add生成验证码
+//        PrintWriter out=resp.getWriter();
+//        resp.setHeader("Cache-Control","no-cache");
+//        int width=60,height=20;
+//        BufferedImage image=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
+//        //获取画笔
+//        Graphics g=image.getGraphics();
+//        //设计背景颜色
+//        g.setColor(new Color(200,200,200));
+//        g.fillRect(0,0,width,height);
+//        //生成随机验证码
+//        Random random=new Random();
+//        int ranNum=1000+random.nextInt(8999);
+//        String randStr=String.valueOf(ranNum);
+//        //验证码存入session
+//        session.setAttribute("loginRandomCode",randStr);
+//        //将验证码显示在图像中
+//        g.setColor(Color.BLACK);
+//        g.setFont(new Font("",Font.PLAIN,20));
+//        g.drawString(randStr,10,17);
+//        //随机生成100个干扰点
+//        for(int i=0;i<100;i++)
+//        {
+//            int x=random.nextInt(width);
+//            int y=random.nextInt(height);
+//            g.drawOval(x,y,1,1);
+//        }
+//        //输出图像到页面
+//        ImageIO.write(image,"JPEG",resp.getOutputStream());
+//        //out.c
+
     }
 
 

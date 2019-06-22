@@ -1,4 +1,8 @@
-<%--
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="java.awt.image.BufferedImage" %>
+<%@ page import="java.awt.*" %>
+<%@ page import="java.util.Random" %>
+<%@ page import="javax.imageio.ImageIO" %><%--
   Created by IntelliJ IDEA.
   User: zuikaku
   Date: 19-3-29
@@ -15,6 +19,7 @@
 
 <%
     String isOk=request.getParameter("isOk");
+
 %>
 <div class="htmleaf-container">
     <div class="wrapper">

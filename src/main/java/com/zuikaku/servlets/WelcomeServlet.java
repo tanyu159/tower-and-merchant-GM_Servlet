@@ -17,6 +17,7 @@ public class WelcomeServlet extends HttpServlet {
 
     @Override
     public void init() throws ServletException {
+//        super.init();
         // 数据库连接池初始化
         ServletContext application=this.getServletContext();
         String dbURL= application.getInitParameter("url");
