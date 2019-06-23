@@ -36,37 +36,6 @@ public class LoginServlet extends HttpServlet {
         RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/page/LoginPage.jsp");
         dispatcher.forward(req,resp);
 
-//        //add生成验证码
-//        PrintWriter out=resp.getWriter();
-//        resp.setHeader("Cache-Control","no-cache");
-//        int width=60,height=20;
-//        BufferedImage image=new BufferedImage(width,height,BufferedImage.TYPE_INT_RGB);
-//        //获取画笔
-//        Graphics g=image.getGraphics();
-//        //设计背景颜色
-//        g.setColor(new Color(200,200,200));
-//        g.fillRect(0,0,width,height);
-//        //生成随机验证码
-//        Random random=new Random();
-//        int ranNum=1000+random.nextInt(8999);
-//        String randStr=String.valueOf(ranNum);
-//        //验证码存入session
-//        session.setAttribute("loginRandomCode",randStr);
-//        //将验证码显示在图像中
-//        g.setColor(Color.BLACK);
-//        g.setFont(new Font("",Font.PLAIN,20));
-//        g.drawString(randStr,10,17);
-//        //随机生成100个干扰点
-//        for(int i=0;i<100;i++)
-//        {
-//            int x=random.nextInt(width);
-//            int y=random.nextInt(height);
-//            g.drawOval(x,y,1,1);
-//        }
-//        //输出图像到页面
-//        ImageIO.write(image,"JPEG",resp.getOutputStream());
-//        //out.c
-
     }
 
 
@@ -76,8 +45,21 @@ public class LoginServlet extends HttpServlet {
         System.out.println("用户执行登录");
         String emailAddress=req.getParameter("email");
         String password=req.getParameter("password");
+        String randomString=req.getParameter("randomString");
+        System.out.println("用户输入的图片验证码"+randomString);
         System.out.println("用户输入的电子邮箱"+emailAddress);
         System.out.println("用户输入的密码"+password);
+        HttpSession session=req.getSession();
+        //先进行人机判断，判断图片验证码是否正确
+        String correctRandomString=session.getAttribute("randomString").toString();
+        if(!randomString.equals(correctRandomString))
+        {
+            //说明图片验证码错误
+            RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/page/LoginPage.jsp?wrongLoginCode=true");
+            dispatcher.forward(req,resp);
+            return;//退出
+        }
+        //说明图像验证码是正确的
         // 数据判断操作 成功则存入session 页面重定向方式跳转到PersonalData.jsp 失败则显示错误信息重定向到LoginPage.jsp
         Connection connection=C3P0DataSource.getConnection();
         User user= UserDAO.UserLogin(connection,emailAddress,password);
@@ -87,19 +69,21 @@ public class LoginServlet extends HttpServlet {
             System.out.println(user);
             UserSave userSave= UserSaveDAO.GetUserSaveByUserid(connection,user.getId());
             C3P0DataSource.closeConnection(connection);//释放这个数据库连接
-            HttpSession session=req.getSession();
+
             session.setAttribute("user",user);
             session.setAttribute("userSave",userSave);
             //转到个人信息面板
 //            RequestDispatcher requestDispatcher=req.getRequestDispatcher("/WEB-INF/page/PersonalData.jsp");
 //            requestDispatcher.forward(req,resp);【这个地方应该使用sendRedirect进行跳转，使地址栏变动，不然此页刷新的话，又要重新登录】
             resp.sendRedirect("/user");
+            System.out.println("重定向到用户数据页面");
         }else {
-            System.out.println("登录失败");
+            System.out.println("登录失败-原因：账户或密码出错");
             //再次重定向到本网页，并用url的使错误信息进行显示【使用forward更好，因为未转到其他jsp，地址栏最好不变】
             //resp.sendRedirect("/login?isOk=false");
             RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/page/LoginPage.jsp?isOk=false");
             dispatcher.forward(req,resp);
+            System.out.println("跳转回登录页面");
         }
     }
 

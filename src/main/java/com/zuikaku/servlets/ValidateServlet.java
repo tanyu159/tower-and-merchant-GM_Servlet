@@ -44,6 +44,7 @@ public class ValidateServlet extends HttpServlet {
         resp.setHeader("Cache-Control","no-cache");
         resp.setContentType("image/jpeg");  //设置输出类型
         String randomString = getRandomString();//随机字符串
+        System.out.println("生成验证码为"+randomString);
         req.getSession(true).setAttribute("randomString", randomString);//放到session里
 
         int width=100;//图片宽度
