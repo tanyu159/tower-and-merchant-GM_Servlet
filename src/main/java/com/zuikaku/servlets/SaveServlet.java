@@ -5,6 +5,7 @@ import com.zuikaku.javabean.UserSave;
 import com.zuikaku.utils.C3P0DataSource;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -19,7 +20,14 @@ public class SaveServlet extends HttpServlet {
         //进入该游戏数据页面 直接转到GameData.jsp
         RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/page/GameData.jsp");
         dispatcher.forward(req,resp);
+
+        //用application所得到的dispatcher 该项目中都一样，因为走的是url的mapping，有专门的servlet处理页面跳转
+        //实际上,用request得到的dispatcher支持相对路径，application得到的dispatcher则不支持
+        //ServletContext application=this.getServletContext();
+        //RequestDispatcher rq= application.getRequestDispatcher("/WEB-INF/page/GameData.jsp");
+        //rq.forward(req,resp);
     }
+
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {

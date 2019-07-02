@@ -21,7 +21,7 @@ public class UserServlet extends HttpServlet {
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //进入个人信息页面 直接转到 PersonalData.jsp
         RequestDispatcher dispatcher=req.getRequestDispatcher("/WEB-INF/page/PersonalData.jsp");
-        System.out.println("测试得到req中的attribute"+req.getAttribute("isChanged"));
+        //System.out.println("测试得到req中的attribute"+req.getAttribute("isChanged"));//读不到，url传过来较parameter，而这个是Attribute
         dispatcher.forward(req,resp);
     }
 
