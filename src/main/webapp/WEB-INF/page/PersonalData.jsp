@@ -14,14 +14,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="Resources/PersonalDataPage/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/images/favicon.png">
     <title></title>
     <!-- Bootstrap Core CSS -->
-    <link href="Resources/PersonalDataPage/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="Resources/PersonalDataPage/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Resources/PersonalDataPage/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="Resources/PersonalDataPage/css/colors/blue.css" id="theme" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Resources/PersonalDataPage/css/colors/blue.css" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -73,13 +73,13 @@ String nickName = userSave.getNickname();
                             <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
                             
                             <!-- Light Logo icon -->
-                            <img src="Resources/PersonalDataPage/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                            <img src="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                         </b>
                         <!--End Logo icon -->
                         <!-- Logo text --><span>
                          
                          <!-- Light Logo text -->    
-                         <img src="Resources/PersonalDataPage/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
+                         <img src="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
                 </div>
                 <!-- ============================================================== -->
                 <!-- End Logo -->
@@ -238,20 +238,20 @@ String nickName = userSave.getNickname();
 
     </div>
 
-    <script src="Resources/PersonalDataPage/assets/plugins/jquery/jquery.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/plugins/jquery/jquery.min.js"></script>
     <!-- Bootstrap tether Core JavaScript -->
-    <script src="Resources/PersonalDataPage/assets/plugins/bootstrap/js/tether.min.js"></script>
-    <script src="Resources/PersonalDataPage/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/plugins/bootstrap/js/tether.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
     <!-- slimscrollbar scrollbar JavaScript -->
-    <script src="Resources/PersonalDataPage/js/jquery.slimscroll.js"></script>
+    <script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/js/jquery.slimscroll.js"></script>
     <!--Wave Effects -->
-    <script src="Resources/PersonalDataPage/js/waves.js"></script>
+    <script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/js/waves.js"></script>
     <!--Menu sidebar -->
-    <script src="Resources/PersonalDataPage/js/sidebarmenu.js"></script>
+    <script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/js/sidebarmenu.js"></script>
     <!--stickey kit -->
-    <script src="Resources/PersonalDataPage/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
     <!--Custom JavaScript -->
-    <script src="Resources/PersonalDataPage/js/custom.min.js"></script>
+    <script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/js/custom.min.js"></script>
     <script type="text/javascript">
         //todo 测试 js中的session对象
         //var user= sessionStorage.getItem("user");

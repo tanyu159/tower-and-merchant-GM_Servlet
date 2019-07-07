@@ -14,7 +14,7 @@
 <head>
     <title>登录</title>
 </head>
-<link rel="stylesheet" type="text/css" href="Resources/LoginPage/styles.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Resources/LoginPage/styles.css">
 <body>
 
 <%

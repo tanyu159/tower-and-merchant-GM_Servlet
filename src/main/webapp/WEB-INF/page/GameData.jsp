@@ -8,10 +8,11 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<%
-    String path=request.getContextPath();
-    request.setAttribute("path",path);
-%>
+<%--这一步放到对应servlet的doget方法中进行<%--%>
+    <%--String path=request.getContextPath();--%>
+    <%--request.setAttribute("path",path);--%>
+<%--路径前面加这个${pageContext.request.contextPath}直接解决问题，且不用修改servlet--%>
+<%--%>--%>
 <html>
 <head>
     <title>游戏数据</title>
@@ -23,14 +24,14 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Favicon icon -->
-    <link rel="icon" type="image/png" sizes="16x16" href="${path}/Resources/PersonalDataPage/assets/images/favicon.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/images/favicon.png">
     <title></title>
     <!-- Bootstrap Core CSS -->
-    <link href="${path}/Resources/PersonalDataPage/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
-    <link href="${path}/Resources/PersonalDataPage/css/style.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Resources/PersonalDataPage/css/style.css" rel="stylesheet">
     <!-- You can change the theme colors from here -->
-    <link href="${path}/Resources/PersonalDataPage/css/colors/blue.css" id="theme" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/Resources/PersonalDataPage/css/colors/blue.css" id="theme" rel="stylesheet">
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -76,13 +77,13 @@
                     <!--You can put here icon as well // <i class="wi wi-sunset"></i> //-->
 
                     <!-- Light Logo icon -->
-                    <img src="${path}/Resources/PersonalDataPage/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
+                    <img src="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/images/logo-light-icon.png" alt="homepage" class="light-logo" />
                 </b>
                     <!--End Logo icon -->
                     <!-- Logo text --><span>
 
                          <!-- Light Logo text -->
-                         <img src="${path}/Resources/PersonalDataPage/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
+                         <img src="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/images/logo-light-text.png" class="light-logo" alt="homepage" /></span> </a>
             </div>
             <!-- ============================================================== -->
             <!-- End Logo -->
@@ -230,20 +231,20 @@
 
 </div>
 
-<script src="${path}/Resources/PersonalDataPage/assets/plugins/jquery/jquery.min.js"></script>
+<script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/plugins/jquery/jquery.min.js"></script>
 <!-- Bootstrap tether Core JavaScript -->
-<script src="${path}/Resources/PersonalDataPage/assets/plugins/bootstrap/js/tether.min.js"></script>
-<script src="${path}/Resources/PersonalDataPage/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
+<script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/plugins/bootstrap/js/tether.min.js"></script>
+<script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/plugins/bootstrap/js/bootstrap.min.js"></script>
 <!-- slimscrollbar scrollbar JavaScript -->
-<script src="${path}/Resources/PersonalDataPage/js/jquery.slimscroll.js"></script>
+<script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/js/jquery.slimscroll.js"></script>
 <!--Wave Effects -->
-<script src="${path}/Resources/PersonalDataPage/js/waves.js"></script>
+<script src="${pageContext.request.contextPath}Resources/PersonalDataPage/js/waves.js"></script>
 <!--Menu sidebar -->
-<script src="${path}/Resources/PersonalDataPage/js/sidebarmenu.js"></script>
+<script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/js/sidebarmenu.js"></script>
 <!--stickey kit -->
-<script src="${path}/Resources/PersonalDataPage/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
+<script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/assets/plugins/sticky-kit-master/dist/sticky-kit.min.js"></script>
 <!--Custom JavaScript -->
-<script src="${path}/Resources/PersonalDataPage/js/custom.min.js"></script>
+<script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/js/custom.min.js"></script>
 <script type="text/javascript">
     //修改结果显示
     console.log("<%=isChanged%>");

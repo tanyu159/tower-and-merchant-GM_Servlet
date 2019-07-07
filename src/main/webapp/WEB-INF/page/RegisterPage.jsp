@@ -10,7 +10,7 @@
 <head>
     <title>注册</title>
 </head>
-<link rel="stylesheet" type="text/css" href="Resources/RegisterPage/styles.css">
+<link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Resources/RegisterPage/styles.css">
 <body>
 <%
   String emailIsExist=request.getParameter("isExist");
