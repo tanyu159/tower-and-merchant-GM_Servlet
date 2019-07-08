@@ -41,17 +41,6 @@
 </head>
 
 <body class="fix-header fix-sidebar card-no-border">
-<%
-    String isChanged=request.getParameter("isChanged");
-    User user=(User) session.getAttribute("user");
-    UserSave userSave=(UserSave) session.getAttribute("userSave");
-    boolean isAdmin=user.isAdmin();
-    byte baseLevel=userSave.getBaselevel();
-    int coins=userSave.getCoin();
-    int diamonds=userSave.getDiamond();
-
-
-%>
 <!-- ============================================================== -->
 <!-- Preloader - style you can find in spinners.css -->
 <!-- ============================================================== -->
@@ -196,19 +185,19 @@
                                 <div class="form-group">
                                     <label for="baseLevel" class="col-md-12">等级</label>
                                     <div class="col-md-12">
-                                        <input name="baseLevel" id="baseLevel" type="text" class="form-control form-control-line" >
+                                        <input name="baseLevel" id="baseLevel" type="text" class="form-control form-control-line" value="${sessionScope.userSave.baselevel}" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="coins" class="col-md-12">银币</label>
                                     <div class="col-md-12">
-                                        <input name="coins" id="coins" type="text" class="form-control form-control-line"  >
+                                        <input name="coins" id="coins" type="text" class="form-control form-control-line" value="${sessionScope.userSave.coin}" >
                                     </div>
                                 </div>
                                 <div class="form-group">
                                     <label for="diamonds" class="col-md-12">钻石</label>
                                     <div class="col-md-12">
-                                        <input name="diamonds" id="diamonds" type="text" class="form-control form-control-line" >
+                                        <input name="diamonds" id="diamonds" type="text" class="form-control form-control-line" value="${sessionScope.userSave.diamond}">
                                     </div>
                                 </div>
 
@@ -247,33 +236,21 @@
 <script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/js/custom.min.js"></script>
 <script type="text/javascript">
     //修改结果显示
-    console.log("<%=isChanged%>");
-    if("<%=isChanged%>"==="false")
+    if("${param.isChanged}"==="false")
     {
         window.alert("修改失败");
 
-    }else if("<%=isChanged%>"==="true") {
+    }else if("${param.isChanged}"==="true") {
         window.alert("修改成功");
     }
 
 
-    // 登录后回显示数据[数据表单]
-    var baseLevelNode=document.getElementById("baseLevel");
-    var coinsNode=document.getElementById("coins");
-    var diamondsNode=document.getElementById("diamonds");
-    baseLevelNode.value="<%=baseLevel%>";
-    coinsNode.value="<%=coins%>";
-    diamondsNode.value="<%=diamonds%>";
-    <%--idNode.value="<%=userid%>";--%>
-    <%--emailNode.value="<%=email%>";--%>
-    <%--nickNameNode.value="<%=nickName%>";--%>
-    <%--passwordNode.value="<%=password%>";--%>
-    <%--idCardNode.value="<%=idCard%>";--%>
+
     // 右上角的登录身份
     var topRightNode=document.getElementById("topRightText");
 
-    console.log(<%=isAdmin%>);
-    if(<%=isAdmin%>)
+    var isAdmin=${sessionScope.user.admin};
+    if(isAdmin)
     {
         console.log("管理员登录");
         topRightNode.innerText="管理员";
@@ -284,7 +261,7 @@
 
     //提交个人信息修改
     function updateGameData() {
-        if(<%=isAdmin%>) {
+        if(isAdmin) {
             personalInfoForm.submit();
         }else {
             window.alert("非管理员不可更改");

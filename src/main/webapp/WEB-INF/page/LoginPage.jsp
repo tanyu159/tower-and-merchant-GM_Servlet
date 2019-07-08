@@ -71,8 +71,8 @@
     var passwordInput=document.getElementById("passwordInput");
     var errorTipsMsg=document.getElementById("tip-msg");
     var randomStringInput=document.getElementById("randomStringInput");
-    var wrongLoginCode="<%=wrongLoginCode%>";
-    var isOk="<%=isOk%>";
+    var wrongLoginCode="${param.wrongLoginCode}";
+    var isOk="${param.isOk}";
     if(wrongLoginCode==="true")
     {
         errorTipsMsg.innerText='图形验证码错误';

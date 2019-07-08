@@ -32,20 +32,14 @@
 
 <body class="fix-header fix-sidebar card-no-border">
 <%
-String isChanged=request.getParameter("isChanged");
+//String isChanged=request.getParameter("isChanged");
 User user=(User) session.getAttribute("user");
 UserSave userSave=(UserSave) session.getAttribute("userSave");
 if(user==null||userSave==null)
 {
     throw new NoLoginExeception("没有登录");
 }
-boolean isAdmin = user.isAdmin();
-boolean isRoot = user.isRoot();
-String userid = String.valueOf(user.getId());
-String email = user.getEmail();
-String password = user.getPassword();
-String idCard = user.getIdcard();
-String nickName = userSave.getNickname();
+
 
 %>
     <!-- ============================================================== -->
@@ -192,31 +186,31 @@ String nickName = userSave.getNickname();
                                     <div class="form-group">
                                         <label for="userid" class="col-md-12">id</label>
                                         <div class="col-md-12">
-                                            <input name="userid" id="userid" type="text" class="form-control form-control-line" readonly="readonly">
+                                            <input name="userid" id="userid" type="text" class="form-control form-control-line" readonly="readonly" value="${sessionScope.user.id}">
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="email" class="col-md-12">电子邮件/登录账号</label>
                                         <div class="col-md-12">
-                                            <input id="email" type="email" class="form-control form-control-line" readonly="readonly" >
+                                            <input id="email" type="email" class="form-control form-control-line" readonly="readonly" value="${sessionScope.user.email}" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="nickname" class="col-md-12">游戏内昵称</label>
                                         <div class="col-md-12">
-                                            <input name="nickname" id="nickname" type="text" class="form-control form-control-line" >
+                                            <input name="nickname" id="nickname" type="text" class="form-control form-control-line" value="${sessionScope.userSave.nickname}" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="password" class="col-md-12">密码</label>
                                         <div class="col-md-12">
-                                            <input name="password" id="password" type="password" value="password" class="form-control form-control-line">
+                                            <input name="password" id="password" type="password" value="${sessionScope.user.password}" class="form-control form-control-line" >
                                         </div>
                                     </div>
                                     <div class="form-group">
                                         <label for="idCard" class="col-md-12">身份证账号</label>
                                         <div  class="col-md-12">
-                                            <input id="idCard" type="text"  class="form-control form-control-line" readonly="readonly">
+                                            <input id="idCard" type="text"  class="form-control form-control-line" readonly="readonly" value="${sessionScope.user.idcard}">
                                         </div>
                                     </div>
 
@@ -253,36 +247,23 @@ String nickName = userSave.getNickname();
     <!--Custom JavaScript -->
     <script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/js/custom.min.js"></script>
     <script type="text/javascript">
-        //todo 测试 js中的session对象
-        //var user= sessionStorage.getItem("user");
 
         //修改后结果显示
-        if("<%=isChanged%>"==="true")
+        if("${param.isChanged}"==="true")
         {
             window.alert("修改成功");
-        }else if("<%=isChanged%>"==="false")
+        }else if("${requestScope.get("isChanged")}"==="false")
         {
             window.alert("修改失败");
         }
 
 
-
-        // 登录后回显示数据[数据表单]
-        var idNode=document.getElementById("userid");
-        var emailNode=document.getElementById("email");
-        var nickNameNode=document.getElementById("nickname");
-        var passwordNode=document.getElementById("password");
-        var idCardNode=document.getElementById("idCard");
-        idNode.value="<%=userid%>";
-        emailNode.value="<%=email%>";
-        nickNameNode.value="<%=nickName%>";
-        passwordNode.value="<%=password%>";
-        idCardNode.value="<%=idCard%>";
         // 右上角的登录身份
         var topRightNode=document.getElementById("topRightText");
         //todo 暂时不考虑root超级用户的登录
-        console.log(<%=isAdmin%>);
-        if(<%=isAdmin%>)
+
+        var isAdmin=${sessionScope.user.admin};
+        if(isAdmin)
         {
             console.log("管理员登录");
             topRightNode.innerText="管理员";

@@ -12,21 +12,6 @@
 </head>
 <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/Resources/RegisterPage/styles.css">
 <body>
-<%
-  String emailIsExist=request.getParameter("isExist");
-  String email=request.getParameter("email");
-  //String securityCode=request.getParameter("securityCode");
-    //从cookie中获得生成验证码
-    String securityCode="";
-  Cookie []cookies=request.getCookies();
-  if(cookies!=null&&cookies.length>0) {//防止空指针异常。
-      for (Cookie temp : cookies) {
-          if (temp.getName().equals("emailSecurityCode")) {
-              securityCode = temp.getValue();
-          }
-      }
-  }
-%>
 <div class="htmleaf-container">
     <div class="wrapper">
         <div class="container">
@@ -40,9 +25,6 @@
                 <input name="password" id="passwordInput" type="password" placeholder="密码">
                 <input id="repeatPasswordInput" type="password" placeholder="重复密码">
                 <input name="idCard" id="idCardInput" type="text" placeholder="身份证号">
-
-
-
                 <input name="adminCode" id="adminCodeInput" type="text" placeholder="管理员码(若有)">
                 <button type="button" id="login-button" onclick="submitRegister()">注册</button>
 
@@ -75,9 +57,9 @@
     var idCardInput=document.getElementById("idCardInput");
     getSecurityCodeBtn.addEventListener("click",verifyEmail.bind(this,emailInput));
     //  再次载入该页面时回显数据【主要用于生成验证码后回来-不用再填邮箱，并且获得生成的验证码是啥】
-    var email="<%=email%>";//获取jsp中的值
-    var securityCode="<%=securityCode%>";//获取jsp中的值
-    var isExist="<%=emailIsExist%>"
+    var email="${param.eamail}";//获取jsp中的值
+    var securityCode="${cookie.emailSecurityCode.value}";//获取cookie中的值
+    var isExist="${param.isExist}";
     //显示获取验证码结果
     if(isExist==="true")
     {

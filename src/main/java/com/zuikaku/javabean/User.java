@@ -7,23 +7,23 @@ public class User {
     private String idcard;
 
     public boolean isAdmin() {
-        return isAdmin;
+        return admin;
     }
 
     public void setAdmin(boolean admin) {
-        isAdmin = admin;
+        this.admin = admin;
     }
 
     public boolean isRoot() {
-        return isRoot;
+        return root;
     }
 
     public void setRoot(boolean root) {
-        isRoot = root;
+        this.root = root;
     }
 
-    private boolean isAdmin=false;
-    private boolean isRoot=false;
+    private boolean admin=false;
+    private boolean root=false;
 
 
 
@@ -33,8 +33,8 @@ public class User {
         this.email=email;
         this.password=password;
         this.idcard=idcard;
-        this.isAdmin=isAdmin;
-        this.isRoot=isRoot;
+        this.admin=isAdmin;
+        this.root=isRoot;
     }
     public int getId() {
         return id;
@@ -71,7 +71,7 @@ public class User {
     @Override
     public String toString()
     {
-        String s="用户id："+id+"用户邮箱："+email+"密码："+password+"身份证："+idcard+"管理员："+isAdmin+"超级管理员："+isRoot;
+        String s="用户id："+id+"用户邮箱："+email+"密码："+password+"身份证："+idcard+"管理员："+admin+"超级管理员："+root;
         return  s;
     }
 
