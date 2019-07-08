@@ -26,8 +26,10 @@ public class User {
     private boolean root=false;
 
 
+    public User() {
+    }
 
-    public User(int id,String email,String password,String idcard,boolean isAdmin,boolean isRoot)
+    public User(int id, String email, String password, String idcard, boolean isAdmin, boolean isRoot)
     {
         this.id=id;
         this.email=email;

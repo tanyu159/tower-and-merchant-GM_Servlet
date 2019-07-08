@@ -5,6 +5,9 @@ public class UserSave {
     private int userid;
     private String nickname="";
 
+    public UserSave() {
+    }
+
     public UserSave(int id, int userid, String nickname, byte baselevel, int coin, int diamond) {
         this.id = id;
         this.userid = userid;
