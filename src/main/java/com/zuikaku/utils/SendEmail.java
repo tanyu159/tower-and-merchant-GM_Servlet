@@ -41,7 +41,7 @@ public class SendEmail {
      * @param emailContent
      * @throws Exception
      */
-    public void SendEmail(String receiverEmailAddress,String emailTitle,String emailContent )
+    public void SendAnEmail(String receiverEmailAddress,String emailTitle,String emailContent )
     {
         try {
 

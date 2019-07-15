@@ -125,7 +125,7 @@ if(user==null||userSave==null)
                         </li>
                         <li> <a class="waves-effect waves-dark" href="/user" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">个人信息</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">玩家列表</span></a>
+                        <li> <a class="waves-effect waves-dark" href="/admin/serverList" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">服务器列表</span></a>
                         </li>
 
                     </ul>
@@ -247,7 +247,6 @@ if(user==null||userSave==null)
     <!--Custom JavaScript -->
     <script src="${pageContext.request.contextPath}/Resources/PersonalDataPage/js/custom.min.js"></script>
     <script type="text/javascript">
-
         //修改后结果显示
         if("${param.isChanged}"==="true")
         {
@@ -270,6 +269,9 @@ if(user==null||userSave==null)
         }else{
             console.log("普通玩家登录");
             topRightNode.innerText="普通玩家";
+            //$(".hide-menu:eq(2)").attr("style","display:none;");//普通玩家是看不到后台的
+            $(".mdi mdi-table").remove();
+            //$("#sidebarnav:nth-child(2)").clear();//无效
 
         }
 

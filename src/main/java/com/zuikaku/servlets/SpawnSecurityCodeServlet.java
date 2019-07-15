@@ -30,7 +30,7 @@ public class SpawnSecurityCodeServlet extends HttpServlet {
         }else{
             //邮箱不存在-可以注册，生成验证码并下发到邮箱，验证码存入cookie，重定向到注册页面。
             String emailSecurityCode= String.valueOf((new Random().nextInt(899999) + 100000));//生成6位随机数
-            SendEmail.Instance().SendEmail(email,"你正在注册箭塔与商人","你的邮件验证码是："+emailSecurityCode);//下发到邮箱
+            SendEmail.Instance().SendAnEmail(email,"你正在注册箭塔与商人","你的邮件验证码是："+emailSecurityCode);//下发到邮箱
             // 验证码存入cookie
             Cookie cookie=new Cookie("emailSecurityCode",emailSecurityCode);
             cookie.setMaxAge(600);
