@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.Console;
 import java.io.IOException;
+import java.util.ResourceBundle;
 
 public class WelcomeServlet extends HttpServlet {
 
@@ -19,11 +20,19 @@ public class WelcomeServlet extends HttpServlet {
     public void init() throws ServletException {
 //        super.init();
         // 数据库连接池初始化
-        ServletContext application=this.getServletContext();
-        String dbURL= application.getInitParameter("url");
-        String username=application.getInitParameter("username");
-        String password=application.getInitParameter("password");
-        C3P0DataSource.init(dbURL,username,password);
+//        ServletContext application=this.getServletContext();
+//        String dbURL= application.getInitParameter("url");
+//        String username=application.getInitParameter("username");
+//        String password=application.getInitParameter("password");
+//        C3P0DataSource.init(dbURL,username,password);
+        //测试使用properties配置文件初始化数据库
+        ResourceBundle rb= ResourceBundle.getBundle("jdbc");
+
+        String driverClassName=rb.getString("driverClassName");
+        String url=rb.getString("url");
+        String username=rb.getString("username");
+        String password=rb.getString("password");
+        C3P0DataSource.init(url,username,password);
 
     }
 
