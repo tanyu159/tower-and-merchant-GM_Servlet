@@ -33,6 +33,11 @@ public class WelcomeServlet extends HttpServlet {
         String username=rb.getString("username");
         String password=rb.getString("password");
         C3P0DataSource.init(url,username,password);
+        System.out.println("通过properties文件加载"+driverClassName+"\n"+
+                url+"\n"+
+                username+"\n"+
+                password+"\n"
+                );
 
     }
 

@@ -270,8 +270,10 @@ if(user==null||userSave==null)
             console.log("普通玩家登录");
             topRightNode.innerText="普通玩家";
             //$(".hide-menu:eq(2)").attr("style","display:none;");//普通玩家是看不到后台的
-            //$(".mdi mdi-table").remove();
-            //$("#sidebarnav:nth-child(2)").clear();//无效
+           // $(".mdi mdi-table").remove();
+
+            $("#sidebarnav").find("li").eq(2).remove();
+           // $("#sidebarnav:nth-child(2)").remove();//无效
 
         }
 
