@@ -41,10 +41,10 @@ public class RegisterServlet extends HttpServlet {
         if(isSuccessful)
         {
             //注册成功
-            resp.sendRedirect("/welcome?isSuccessful=true");
+            resp.sendRedirect(req.getContextPath()+"/welcome?isSuccessful=true");
         }else{
             //注册失败
-            resp.sendRedirect("/welcome?isSuccessful=false");
+            resp.sendRedirect(req.getContextPath()+"/welcome?isSuccessful=false");
         }
     }
 

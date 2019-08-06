@@ -12,7 +12,7 @@
 </title>
 <style type="text/css">
     body{
-        background-image: url("/Resources/index/indexBG.jpeg");
+        background-image: url("${pageContext.request.contextPath}/Resources/index/indexBG.jpeg");
         background-size: 100% 100%;
     }
     .center-text{
@@ -77,8 +77,8 @@
 %>
 <div class="centerContent">
     <p class="center-text">箭塔与商人GM系统</p>
-    <a href="/register" class="registerBtn" >注册</a>
-    <a href="/login" class="loginBtn">登录</a>
+    <a href="${pageContext.request.contextPath}/register" class="registerBtn" >注册</a>
+    <a href="${pageContext.request.contextPath}/login" class="loginBtn">登录</a>
 </div>
 </body>
 <script type="text/javascript">

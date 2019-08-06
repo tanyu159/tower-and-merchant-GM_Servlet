@@ -120,9 +120,9 @@
             <!-- Sidebar navigation-->
             <nav class="sidebar-nav">
                 <ul id="sidebarnav">
-                    <li> <a class="waves-effect waves-dark" href="/user/userSave" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">游戏数据</span></a>
+                    <li> <a class="waves-effect waves-dark" href="${pageContext.request.contextPath}/user/userSave" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">游戏数据</span></a>
                     </li>
-                    <li> <a class="waves-effect waves-dark" href="/user" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">个人信息</span></a>
+                    <li> <a class="waves-effect waves-dark" href="${pageContext.request.contextPath}/user" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">个人信息</span></a>
                     </li>
                     <li> <a class="waves-effect waves-dark" href="table-basic.html" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">玩家列表</span></a>
                     </li>
@@ -181,7 +181,7 @@
                     <div class="card">
                         <div class="card-block">
                             <%--修改游戏数据表单提交--%>
-                            <form action="/user/userSave" name="personalInfoForm" class="form-horizontal form-material" method="post">
+                            <form action="${pageContext.request.contextPath}/user/userSave" name="personalInfoForm" class="form-horizontal form-material" method="post">
                                 <div class="form-group">
                                     <label for="baseLevel" class="col-md-12">等级</label>
                                     <div class="col-md-12">

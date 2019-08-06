@@ -17,7 +17,7 @@
         <div class="container">
             <h1>欢迎注册GM系统</h1>
 
-            <form action="/register" name="registerForm" class="Form" method="post">
+            <form action="${pageContext.request.contextPath}/register" name="registerForm" class="Form" method="post">
                 <input name="email" id="emailInput" type="text" placeholder="邮箱">
                 <button type="button"  id="get-securityCode" >获取邮箱验证码</button>
                 <p>&nbsp;</p>
@@ -82,7 +82,7 @@
         if(emailRegex.test(emailInput.value))
         {
             //  发送邮箱到获得验证码界面.将这个过程写在另一个jsp中
-            window.location.href="/spawnCode?email="+emailInput.value;
+            window.location.href="${pageContext.request.contextPath}/spawnCode?email="+emailInput.value;
             //window.close();//关闭掉注册页面。实际部署时不能这样，网页将会关闭
         }else{
             window.alert("邮箱格式不正确");

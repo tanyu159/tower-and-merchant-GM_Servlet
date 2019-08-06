@@ -75,7 +75,7 @@ public class LoginServlet extends HttpServlet {
             //转到个人信息面板
 //            RequestDispatcher requestDispatcher=req.getRequestDispatcher("/WEB-INF/page/PersonalData.jsp");
 //            requestDispatcher.forward(req,resp);【这个地方应该使用sendRedirect进行跳转，使地址栏变动，不然此页刷新的话，又要重新登录】
-            resp.sendRedirect("/user");
+            resp.sendRedirect(req.getContextPath()+"/user");
             System.out.println("重定向到用户数据页面");
         }else {
             System.out.println("登录失败-原因：账户或密码出错");

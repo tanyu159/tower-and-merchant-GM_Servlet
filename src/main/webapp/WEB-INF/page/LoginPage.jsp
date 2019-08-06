@@ -26,11 +26,11 @@
         <div class="container">
             <h1>欢迎登录GM系统</h1>
 
-            <form action="/login" name="loginForm" class="form" method="post">
+            <form action="${pageContext.request.contextPath}/login" name="loginForm" class="form" method="post">
                 <input name="email" id="emailInput" type="text" placeholder="邮箱">
                 <input name="password" id="passwordInput" type="password" placeholder="密码">
                 <input name="randomString" id="randomStringInput" type="text" placeholder="图片验证码">
-                <img  id="randomStrPicture" src="/loginCode" title="点击更换验证码" style="border: white 2px solid;border-radius: 2px;" onclick="reflash()">
+                <img  id="randomStrPicture" src="${pageContext.request.contextPath}/loginCode" title="点击更换验证码" style="border: white 2px solid;border-radius: 2px;" onclick="reflash()">
                 <p></p>
                 <br>
                 <button type="button" id="login-button" onclick="login()">登录</button>
@@ -39,7 +39,7 @@
 
                 <p>&nbsp;</p>
 
-                <a href="/forget" style="text-decoration: none;color: white;" id="forget-password">忘记密码</a>
+                <a href="${pageContext.request.contextPath}/forget" style="text-decoration: none;color: white;" id="forget-password">忘记密码</a>
                 <a href="javascript:void(0);" style="text-decoration: none;color: red;display: none;font-weight: bold" id="tip-msg">000</a>
             </form>
 
@@ -123,7 +123,7 @@
     function reflash() {
         var randomStrPicture=document.getElementById("randomStrPicture");
         console.log("刷新验证码");
-        randomStrPicture.src="/loginCode?"+new Date().getTime();//刷新验证码必须让src有些不同，所以后面跟了个时间戳
+        randomStrPicture.src="${pageContext.request.contextPath}/loginCode?"+new Date().getTime();//刷新验证码必须让src有些不同，所以后面跟了个时间戳
     }
 </script>
 </html>

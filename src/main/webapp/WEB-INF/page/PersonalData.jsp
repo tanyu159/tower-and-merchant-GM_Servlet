@@ -121,11 +121,11 @@ if(user==null||userSave==null)
                 <!-- Sidebar navigation-->
                 <nav class="sidebar-nav">
                     <ul id="sidebarnav">
-                        <li> <a class="waves-effect waves-dark" href="/user/userSave" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">游戏数据</span></a>
+                        <li> <a class="waves-effect waves-dark" href="${pageContext.request.contextPath}/user/userSave" aria-expanded="false"><i class="mdi mdi-gauge"></i><span class="hide-menu">游戏数据</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="/user" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">个人信息</span></a>
+                        <li> <a class="waves-effect waves-dark" href="${pageContext.request.contextPath}/user" aria-expanded="false"><i class="mdi mdi-account-check"></i><span class="hide-menu">个人信息</span></a>
                         </li>
-                        <li> <a class="waves-effect waves-dark" href="/admin/serverList" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">服务器列表</span></a>
+                        <li> <a class="waves-effect waves-dark" href="${pageContext.request.contextPath}/admin/serverList" aria-expanded="false"><i class="mdi mdi-table"></i><span class="hide-menu">服务器列表</span></a>
                         </li>
 
                     </ul>
@@ -140,7 +140,7 @@ if(user==null||userSave==null)
             <div class="sidebar-footer">
 
 
-                <!-- item--><a href="/welcome" class="link" data-toggle="tooltip" title="注销"><i class="mdi mdi-power"></i></a> </div>
+                <!-- item--><a href="${pageContext.request.contextPath}/welcome" class="link" data-toggle="tooltip" title="注销"><i class="mdi mdi-power"></i></a> </div>
             <!-- End Bottom points-->
         </aside>
         <!-- ============================================================== -->
@@ -182,7 +182,7 @@ if(user==null||userSave==null)
                         <div class="card">
                             <div class="card-block">
 <%--                                修改个人信息表单提交--%>
-                                <form action="/user" name="personalInfoForm" class="form-horizontal form-material" method="post" >
+                                <form action="${pageContext.request.contextPath}/user" name="personalInfoForm" class="form-horizontal form-material" method="post" >
                                     <div class="form-group">
                                         <label for="userid" class="col-md-12">id</label>
                                         <div class="col-md-12">

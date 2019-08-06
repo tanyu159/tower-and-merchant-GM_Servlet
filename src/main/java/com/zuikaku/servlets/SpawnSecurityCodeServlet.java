@@ -26,7 +26,7 @@ public class SpawnSecurityCodeServlet extends HttpServlet {
         {
             //给出信息-邮箱已经存在
             System.out.println("邮箱已经存在");
-            resp.sendRedirect("/register?isExist=true");
+            resp.sendRedirect(req.getContextPath()+"/register?isExist=true");
         }else{
             //邮箱不存在-可以注册，生成验证码并下发到邮箱，验证码存入cookie，重定向到注册页面。
             String emailSecurityCode= String.valueOf((new Random().nextInt(899999) + 100000));//生成6位随机数
@@ -37,7 +37,7 @@ public class SpawnSecurityCodeServlet extends HttpServlet {
             //cookie存入客户端
             resp.addCookie(cookie);
             //重定向
-            resp.sendRedirect("/register?isExist=false&email="+email);
+            resp.sendRedirect(req.getContextPath()+"/register?isExist=false&email="+email);
         }
     }
 }
